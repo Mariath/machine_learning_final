@@ -1,11 +1,8 @@
 ---
-title:'final project'
+title: 'final project'
 author: 'Maria Tkachuk'
-data:'10/8/2018'
-output:
-  html_document:
-    self_contained: true
-    
+data: '10/8/2018'
+output: html_document
 ---
 
 # Practical Machine Learning - Course Project
