@@ -1,6 +1,13 @@
-#Practical Machine Learning - Course Project
+---
+title: 'Final Project'
+author: 'Maria Tkachuk'
+data: '10/8/2018'
+output: html_document
+---
 
-##Introduction 
+# Practical Machine Learning - Course Project
+
+## Introduction 
 For this project, we are given data from accelerometers on the belt, forearm, arm, and dumbell of 6 research study participants. Our training data consists of accelerometer data and a label identifying the quality of the activity the participant was doing. Our testing data consists of accelerometer data without the identifying label. Our goal is to predict the labels for the test set observations.
 
 Below is the code I used when creating the model, estimating the out-of-sample error, and making predictions. I also include a description of each step of the process.
@@ -49,7 +56,7 @@ test_processed<-test_processed[,-(1:5)]
 ```
 
 
-##Prediction with Decision Trees
+## Prediction with Decision Trees
 ```{r}
 set.seed(1222)
 library(rpart)
@@ -63,12 +70,10 @@ cM<-confusionMatrix(predRpart,test_processed$classe)
 cM
 plot(cM$table,col=cM$byClass,main=paste('Decision Tree Confision Matrix: Accuracy=',round(cM$overall['Accuracy'],4)))
 ```
+We can see tha the accuracy rate is very low 0.6887 and therefore the out-of-sample-error is abount 0.3.
 
 
-We can see tha the accuracy rate is very low and, therefore, the out-of-sample-error is about 0.4.
-
-
-##Random Forest Prediction
+## Random Forest Prediction
 I fit the model on train_processed, and instruct the "train" function to use 3-fold cross-validation to select optimal tuning parameters for the model.
 
 ```{r}
@@ -84,7 +89,7 @@ fit$finalModel
 ```
 
 
-##Model Evaluation and Selection
+## Model Evaluation and Selection
 Now, I use the fitted model to predict the label ("classe") in test_processed, and show the confusion matrix to compare the predicted versus the actual labels:
 
 ```{r}
@@ -99,7 +104,7 @@ The accuracy is 99.7%, thus my predicted accuracy for the out-of-sample error is
 
 This is an excellent result, so rather than trying additional algorithms, I will use Random Forests to predict on the test set.
 
-##Re-training the Selected Model
+## Re-training the Selected Model
 Before predicting on the test set, it is important to train the model on the full training set (train), rather than using a model trained on a reduced training set (train_procesesd), in order to produce the most accurate predictions. 
 
 ```{r}
