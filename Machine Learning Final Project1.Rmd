@@ -11,8 +11,8 @@ I load the caret package, and read in the training and testing data:
 ```{r}
 library(caret)
 
-train <- read.csv("pml-training.csv")
-test <- read.csv("pml-testing.csv")
+train <- read.csv("C:\\Users\\mariat\\Downloads\\pml-training.csv")
+test <- read.csv("C:\\Users\\mariat\\Downloads\\pml-testing.csv")
 ```
 
 ## Pre-processing
